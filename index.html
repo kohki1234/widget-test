@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script src="https://lpcdn.lpsnmedia.net/webagent/client-SDK.min.js"></script>
+  <script>
+    function myFunction() {
+      console.log("method called!!")
+    var notifyWhenDone = function(err) {
+        if (err) {
+            console.log("an error was called")
+        }
+        console.log("The command was correctly executed")
+    };
+
+    var cmdName = lpTag.agentSDK.cmdNames.write; // = "Write ChatLine"
+    var data = {
+      text: "Some text",
+      quickReplies: {
+        "type": "quickReplies",
+        "itemsPerRow": 8,
+        "replies": [
+          {
+            "type": "button",
+            "tooltip": "yes i do",
+            "title": "yes",
+            "click": {
+              "actions": [
+                {
+                  "type": "publishText",
+                  "text": "yep"
+                }
+              ],
+              "metadata": [
+                {
+                  "type": "ExternalId",
+                  "id": "Yes-1234"
+                }
+              ]
+            }
+          },
+          {
+            "type": "button",
+            "tooltip": "No!",
+            "title": "No!",
+            "click": {
+              "actions": [
+                {
+                  "type": "publishText",
+                  "text": "No!"
+                }
+              ],
+              "metadata": [
+                {
+                  "type": "ExternalId",
+                  "id": "No-4321"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    };
+
+    lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
+}
+
+  
+  </script>
+
+
+  <meta charset="utf-8">
+  <title>WidgetTest</title>
+  <base href="https://kohki1234.github.io/widget-test/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" href="styles.3ff695c00d717f2d2a11.css"></head>
+<body>
+  <button onclick="myFunction()">Click me</button>
+  <app-root>
+  </app-root>
+<script type="text/javascript" src="runtime.06daa30a2963fa413676.js"></script><script type="text/javascript" src="polyfills.f4b78b65941f8063fd57.js"></script><script type="text/javascript" src="main.fe3fc3a1c4d595dec2c7.js"></script></body>
+</html>
